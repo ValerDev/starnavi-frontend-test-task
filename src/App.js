@@ -5,16 +5,16 @@ import _, { indexOf } from 'lodash';
 import InfoBlock from './components/InfoBlock';
 function App() {
   const [data, setData] = useState([]);
-  const [background, setBackground] = useState(true);
+  const [background, setBackground] = useState(false);
   const [mode, setMode] = useState(5);
   const [squareWrapper, setSquareWrapper] = useState(mode * 41 + mode * 2 + 'px');
   const [row, setRow] = useState(mode);
   const [column, setColumn] = useState(mode);
-  const [r, setR] = useState();
-  const [c, setC] = useState();
-  const [info, setInfo] = useState([]);
-  const firstColor = '#ffffff';
-  const secondColor = '#03a8f4';
+  const [r, setR] = useState(null);
+  const [c, setC] = useState(null);
+  const [info] = useState([]);
+  const [firstColor] = useState('#ffffff');
+  const [secondColor] = useState('#03a8f4');
 
   const getData = () => {
     let data = [];
@@ -31,9 +31,10 @@ function App() {
   const handleHover = (event) => {
     setC(+event.target.id.split('_')[0])
     setR(+event.target.id.split('_')[1])
-    info.includes(`row ${r} col ${c}`) || !c&&!r ? info.splice(indexOf(`row ${r} col ${c}`), 1) :  info.push(`row ${r} col ${c}`)
-    setBackground(!background)
+    info.includes(`row ${r} col ${c}`) || !c ? info.splice(indexOf(`row ${r} col ${c}`), 1) :  info.push(`row ${r} col ${c}`)
     background ? event.target.style.backgroundColor = firstColor : event.target.style.backgroundColor = secondColor;
+    setBackground(!background)
+    console.log(event.target) 
   }
   useEffect(() => {
     getData()
@@ -63,7 +64,7 @@ function App() {
       <div className='info-block'>
           <h1>Hover squares</h1>
           <div className='squares-info'>
-            {info.map(info => <InfoBlock text={info}/>)}
+            {info.map((info, i) => <InfoBlock text={info} key={i}/>)}
           </div>
       </div>
     </div>

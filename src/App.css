@@ -13,10 +13,24 @@
   width: 200px;
   height: 40px;
   margin-right: .5em;
+  transition: .2s;
+  border-radius: 5px;
+}
+.main-form>.select:focus{
+  box-shadow: 0 0 0 3px #0075d888;
+
 }
 .main-form>.start-btn{
   height: 40px;
+  background-color: #0075d8;
+  color: #fff;
+  border: none;
+  transition: .2s;
+  border-radius: 5px;
   padding: 0 .5em;
+}
+.main-form>.start-btn:hover{
+  box-shadow: 0 0 0 3px #0075d888;
 }
 .squares-wrapper{
   border: 1px solid #000;
