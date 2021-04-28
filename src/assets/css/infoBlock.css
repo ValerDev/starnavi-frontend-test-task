@@ -1,0 +1,13 @@
+
+.squares-info .info-block{
+    transition: .2s;
+    padding: .5em ;
+    width: 150px;
+    text-align: center;
+    border-radius: 5px;
+    border: 2px solid #ece5af;
+    background-color: #fbf8e3;
+    margin: .5em 0;
+    color: #957c4d;
+    font-weight: bold;
+}
